@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OrderManagementSystem.DTOs;
 using OrderManagementSystem.Services;
 
@@ -18,6 +19,7 @@ namespace OrderManagementSystem.Controllers
             return Ok(new { message = "Registered successfully" });
         }
 
+     
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDTO dto)
         {

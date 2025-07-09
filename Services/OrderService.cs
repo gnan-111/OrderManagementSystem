@@ -47,10 +47,10 @@ namespace OrderManagementSystem.Services
             await _repo.DeleteAsync(order);
         }
 
-        Task<IEnumerable<OrderDTO>> IOrderService.GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
+        //Task<IEnumerable<OrderDTO>> IOrderService.GetAllAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         Task<OrderDTO> IOrderService.GetByIdAsync(int id)
         {

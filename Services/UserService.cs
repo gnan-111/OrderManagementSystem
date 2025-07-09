@@ -35,21 +35,26 @@ namespace OrderManagementSystem.Services
             var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(dto.Password));
             if (!computedHash.SequenceEqual(user.PasswordHash))
                 throw new Exception("Invalid credentials");
-            // Generate JWT
+
             var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
-            var key = System.Text.Encoding.ASCII.GetBytes(_config["Jwt:Key"]);
+            var key = System.Text.Encoding.UTF8.GetBytes(_config["JwtConfig:Key"]);
+            var claims = new List<System.Security.Claims.Claim>
+            {
+                new(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new(System.Security.Claims.ClaimTypes.Email, user.Email),
+                new(System.Security.Claims.ClaimTypes.Role, user.Role.ToString())
+            };
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new System.Security.Claims.ClaimsIdentity(new[]{
-                new System.Security.Claims.Claim(V, user.Id.ToString()),
-                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, user.Role.ToString())
-
-            }),
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                Subject = new System.Security.Claims.ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config["JwtConfig:TokenValidityMins"])),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _config["JwtConfig:Issuer"],
+                Audience = _config["JwtConfig:Audience"]
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
     }
+
 }

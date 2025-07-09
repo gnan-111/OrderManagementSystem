@@ -8,6 +8,8 @@ namespace OrderManagementSystem.Services
     public interface IOrderService
     {
         Task<IEnumerable<OrderDTO>> GetAllAsync();
+
+        //Task<OrderDTO> GetAllAsync();
         Task<OrderDTO> GetByIdAsync(int id);
         Task<OrderDTO> CreateAsync(OrderCreateDTO dto);
         Task<OrderDTO> UpdateAsync(int id, OrderCreateDTO dto);

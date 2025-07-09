@@ -6,13 +6,13 @@ using OrderManagementSystem.Services;
 namespace OrderManagementSystem.Controllers
 {
     [ApiController]
+
     [Route("api/[controller]/[action]")]
-    [Authorize]
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService _service;
         public OrdersController(IOrderService service) => _service = service;
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
 
