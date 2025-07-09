@@ -10,13 +10,15 @@ An ASP.NET Core Web API project for managing users and orders, with support for 
 - Role-based Authorization
 - CRUD operations for Orders
 - Exception handling middleware
+- Clean Architecture Implementation
+- Repository structure and Interface implementation
 - DTO-based API model separation
 - Entity Framework Core + Code First Migrations
 - CORS configured for React frontend integration
 
 ---
 
-## Project Structure
+## Project Structure & overview
 
 ```
 OrderManagementSystem/
@@ -41,7 +43,7 @@ OrderManagementSystem/
 - Frontend: React (in `clientapp/`)
 - Authentication: JWT Bearer Tokens
 - Database: SQL Server + Entity Framework Core
-- Tools: Swagger, Postman, Visual Studio
+- Tools: Swagger, Postman, Visual Studio 2022, Visual Studio Code.
 
 ---
 
@@ -62,6 +64,7 @@ Uses JWT tokens to secure endpoints.
 - .NET 8 SDK
 - SQL Server (or modify connection string)
 - Node.js + npm (for frontend)
+- CORS and Axios Setup at Backend and React Frontend
 
 ### Steps
 
@@ -73,13 +76,16 @@ dotnet ef database update
 dotnet run
 ```
 
-API will run at: `https://localhost:5001` or `http://localhost:5000`
+API will run at: `https://localhost:72**` in my case
 
 #### 2. Frontend
 
 ```bash
 cd clientapp
 npm install
+npm install axios
+npm install react-router-dom
+
 npm start
 ```
 
@@ -96,12 +102,12 @@ Frontend will run at: `http://localhost:3000`
 
 ### OrdersController
 
-- `GET /api/Orders` — Get all orders
-- `POST /api/Orders` — Create order
-- `PUT /api/Orders/{id}` — Update order
-- `DELETE /api/Orders/{id}` — Delete order
+- `GET /api/Orders/Getall` — Get all orders
+- `POST /api/Orders/Create` — Create order
+- `PUT /api/Orders/Update/{id}` — Update order
+- `DELETE /api/Orders/Delete/{id}` — Delete order
 
-Note: All order endpoints require JWT authorization.
+Note: All order endpoints require JWT Authentication.
 
 ---
 
@@ -137,7 +143,6 @@ Edit `appsettings.json`:
 
 ## To-Do (optional)
 
-- Add user roles (Admin/User)
 - Unit tests for services and controllers
 - Deploy to Azure or Docker
 - Implement pagination and filtering for orders
@@ -146,10 +151,10 @@ Edit `appsettings.json`:
 
 ## License
 
-MIT License - feel free to use and modify.
+feel free to use and modify.
 
 ---
 
 ## Author
-
+## Bandaru Gnaneswar Sai--.NET Fullstack Developer.
 Built using ASP.NET Core and React.
