@@ -10,11 +10,11 @@ An ASP.NET Core Web API project for managing users and orders, with support for 
 - Role-based Authorization
 - CRUD operations for Orders
 - Exception handling middleware
-- Clean Architecture Implementation
+- Clean Architecture 
 - Repository structure and Interface implementation
 - DTO-based API model separation
 - Entity Framework Core + Code First Migrations
-- CORS configured for React frontend integration
+- CORS and Axios configured for React frontend integration
 
 ---
 
@@ -33,6 +33,7 @@ OrderManagementSystem/
 ├── clientapp/                # React frontend (optional)
 ├── appsettings.json          # Application configuration
 ├── Program.cs                # Entry point and middleware setup
+
 ```
 
 ---
@@ -157,4 +158,4 @@ feel free to use and modify.
 
 ## Author
 ## Bandaru Gnaneswar Sai--.NET Fullstack Developer.
-Built using ASP.NET Core and React.
+This code is the intellectual property of Bandaru Gnaneswar sai - Built using ASP.NET Core and React.
